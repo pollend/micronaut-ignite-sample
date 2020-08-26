@@ -24,8 +24,7 @@ public class PetController {
     @Get()
     public MutableHttpResponse<List<Pet>> index() {
         FieldsQueryCursor<List<?>> cursor = store.query(
-            new SqlFieldsQuery("SELECT id, breed, name FROM PETS")
-                .setSchema("PUBLIC"));
+            new SqlFieldsQuery("SELECT id, breed, name FROM Pet"));
         List<Pet> response = new ArrayList<>(cursor.getColumnsCount());
         for (List<?> row : cursor.getAll()) {
             Pet p = new Pet();
@@ -41,9 +40,8 @@ public class PetController {
     @Get("/{id}")
     public MutableHttpResponse<Pet> get(@PathVariable Long id) {
         FieldsQueryCursor<List<?>> cursor = store.query(
-            new SqlFieldsQuery("SELECT id, breed, name FROM PETS WHERE id = ?")
-                .setArgs(id)
-                .setSchema("PUBLIC"));
+            new SqlFieldsQuery("SELECT id, breed, name FROM Pet WHERE id = ?")
+                .setArgs(id));
         for (List<?> row : cursor.getAll()) {
             Pet p = new Pet();
             p.id = (long) row.get(0);

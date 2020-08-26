@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3'
 
 services:
     ignite_server_node:
@@ -6,13 +6,13 @@ services:
         ports:
             - 47500:47500
             - 47100:47100
+            - 11211:11211
+            - 49112:49112
         environment:
             - IGNITE_WORK_DIR=/opt/ignite/work
         volumes:
             - ./.ignite:/opt/ignite/work
-#    micronaut:
-#        build: ./
-#        depends_on:
-#            - ignite_server_node
-#        ports:
-#            - 8080:8080
+    micronaut:
+        build: ./
+        ports:
+            - 8080:8080
