@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+    ignite_server_node:
+        image: apacheignite/ignite:2.8.1
+        ports:
+            - 47500:47500
+            - 47100:47100
+        environment:
+            - IGNITE_WORK_DIR=/opt/ignite/work
+        volumes:
+            - ./.ignite:/opt/ignite/work
+#    micronaut:
+#        build: ./
+#        depends_on:
+#            - ignite_server_node
+#        ports:
+#            - 8080:8080

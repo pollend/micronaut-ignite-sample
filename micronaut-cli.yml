@@ -1,0 +1,5 @@
+profile: service
+defaultPackage: org.pollend.demo
+---
+testFramework: junit
+sourceLanguage: java
